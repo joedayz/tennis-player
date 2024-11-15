@@ -27,6 +27,8 @@ public class TennisPlayerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		dao.createTournamentTable();
+
 		logger.info("Inserting Player 4 -> {}", dao.insertPlayer(new Player(4, "Roger Federer",
 				"Switzerland", new Date(System.currentTimeMillis()), 20)));
 
@@ -38,5 +40,11 @@ public class TennisPlayerApplication implements CommandLineRunner {
 		logger.info("All Players Data -> {}", dao.getAllPlayers());
 
 		logger.info("Player with Id 3 -> {}", dao.getPlayerById(3));
+
+		logger.info("Deleting Player with Id 3 -> {}", dao.deletePlayer(3));
+
+		logger.info("French Players -> {}", dao.getPlayerByNationality("France"));
+
+
 	}
 }
