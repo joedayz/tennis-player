@@ -1,19 +1,36 @@
 package pe.joedayz.tennis_player.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.util.Date;
 
 /**
  * @author josediaz
  **/
+@Entity
+@Table(name = "jpa_player")
 public class Player {
 
+  @Id
+  @GeneratedValue
   private int id;
   private String name;
+  @Column(name = "nationality")
   private String nationality;
   private Date birthDate;
   private int titles;
 
   public Player() {
+  }
+
+  public Player(String name, String nationality, Date birthDate, int titles) {
+    this.name = name;
+    this.nationality = nationality;
+    this.birthDate = birthDate;
+    this.titles = titles;
   }
 
   public Player(int id, String name, String nationality, Date birthDate, int titles) {
