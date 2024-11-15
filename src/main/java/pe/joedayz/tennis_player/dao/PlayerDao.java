@@ -1,5 +1,6 @@
 package pe.joedayz.tennis_player.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -25,4 +26,14 @@ public class PlayerDao {
     String sql = "SELECT * FROM PLAYER WHERE ID = ?";
     return jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Player>(Player.class));
   }
+
+  public int insertPlayer(Player player) {
+    String sql = "INSERT INTO PLAYER (ID, NAME, NATIONALITY, BIRTH_DATE, TITLES) VALUES(?, ?, ?, ?, ?)";
+
+    return jdbcTemplate.update(sql, new Object[] {player.getId(),
+        player.getName(), player.getNationality(), new Timestamp(player.getBitrhdate().getTime()),
+        player.getTitles()});
+  }
+
+
 }
