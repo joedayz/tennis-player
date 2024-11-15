@@ -19,6 +19,10 @@ public class PlayerDao {
   public List<Player> getAllPlayers(){
     String sql = "SELECT * FROM PLAYER";
     return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Player>(Player.class));
+  }
 
+  public Player getPlayerById(int id){
+    String sql = "SELECT * FROM PLAYER WHERE ID = ?";
+    return jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Player>(Player.class));
   }
 }
