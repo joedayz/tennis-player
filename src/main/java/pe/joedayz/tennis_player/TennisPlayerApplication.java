@@ -30,8 +30,12 @@ public class TennisPlayerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		logger.info("Inserting Player 1 -> {}", repository.insertPlayer(new Player("Rafael Nadal",
-				"Spain", Date.valueOf("1987-05-22"), 81)));
+		logger.info("\n\n>> Inserting Player: {}\n", repository.insertPlayer(
+				new Player("Djokovic", "Serbia", Date.valueOf("1987-05-22"), 81)));
+		logger.info("\n\n>> Inserting Player: {}\n", repository.insertPlayer(
+				new Player("Monfils", "France", Date.valueOf("1986-09-01"), 10)));
+
+		logger.info("\n\n>> Player with id 2: {}\n", repository.getPlayerById(2));
 
 
 //		dao.createTournamentTable();
