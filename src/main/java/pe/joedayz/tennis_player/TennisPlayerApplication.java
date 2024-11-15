@@ -1,6 +1,7 @@
 package pe.joedayz.tennis_player;
 
-import java.util.Date;
+
+import java.sql.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,13 @@ public class TennisPlayerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		logger.info("Inserting Play 4 -> {}", dao.insertPlayer(new Player(4, "Roger Federer",
+		logger.info("Inserting Player 4 -> {}", dao.insertPlayer(new Player(4, "Roger Federer",
 				"Switzerland", new Date(System.currentTimeMillis()), 20)));
+
+
+		logger.info("Updating Player 4 -> {}", dao.updatePlayer(new Player(4, "Roger Federer",
+				"Switzerland", Date.valueOf("1993-09-03"), 20)));
+
 
 		logger.info("All Players Data -> {}", dao.getAllPlayers());
 

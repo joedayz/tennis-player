@@ -31,9 +31,16 @@ public class PlayerDao {
     String sql = "INSERT INTO PLAYER (ID, NAME, NATIONALITY, BIRTH_DATE, TITLES) VALUES(?, ?, ?, ?, ?)";
 
     return jdbcTemplate.update(sql, new Object[] {player.getId(),
-        player.getName(), player.getNationality(), new Timestamp(player.getBitrhdate().getTime()),
+        player.getName(), player.getNationality(), new Timestamp(player.getBirthDate().getTime()),
         player.getTitles()});
   }
 
+  public int updatePlayer(Player player) {
+    String sql = "UPDATE PLAYER " +
+        "SET NAME = ?, NATIONALITY = ?, BIRTH_DATE = ?, TITLES = ? " +
+        "WHERE ID = ?";
+    return jdbcTemplate.update(sql, new Object[]{player.getName(), player.getNationality(),
+        new Timestamp(player.getBirthDate().getTime()), player.getTitles(), player.getId()});
+  }
 
 }
