@@ -35,6 +35,10 @@ public class PlayerRepository {
     entityManager.remove(player);
   }
 
+  public List<Player> getAllPlayers(){
+    return entityManager.createNamedQuery("get_all_players", Player.class).getResultList();
+  }
+
   public List<Player> findPlayersByNationalityAndTitles(String nationality, int titles){
     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
     var cq = cb.createQuery(Player.class);

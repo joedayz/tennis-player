@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  * @author josediaz
  **/
 @Entity
+@NamedQuery(name = "get_all_players", query = "SELECT p FROM Player p")
 @Table(name = "jpa_player")
 public class Player {
 
