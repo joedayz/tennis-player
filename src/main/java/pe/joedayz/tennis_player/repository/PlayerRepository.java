@@ -30,6 +30,11 @@ public class PlayerRepository {
     return entityManager.find(Player.class, id);
   }
 
+  public void deletePlayerById(int id){
+    Player player = entityManager.find(Player.class, id);
+    entityManager.remove(player);
+  }
+
   public List<Player> findPlayersByNationalityAndTitles(String nationality, int titles){
     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
     var cq = cb.createQuery(Player.class);
