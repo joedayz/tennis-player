@@ -18,4 +18,8 @@ public class PlayerService {
   public List<Player> getAllPlayers(){
     return repo.findAll();
   }
+
+  public Player getPlayer(int id){
+    return repo.findById(id).get();
+  }
 }
