@@ -1,8 +1,10 @@
 package pe.joedayz.tennis_player.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
@@ -13,15 +15,16 @@ import java.util.Date;
  **/
 @Entity
 @NamedQuery(name = "get_all_players", query = "SELECT p FROM Player p")
-@Table(name = "jpa_player")
+//@Table(name = "jpa_player")
 public class Player {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue (strategy= GenerationType.IDENTITY)
   private int id;
   private String name;
   @Column(name = "nationality")
   private String nationality;
+  @JsonFormat(pattern = "dd-MM-yyyy")
   private Date birthDate;
   private int titles;
 
