@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pe.joedayz.tennis_player.model.Player;
 import pe.joedayz.tennis_player.repository.PlayerRepository;
+import pe.joedayz.tennis_player.repository.PlayerSpringDataRepository;
 
 @SpringBootApplication
 public class TennisPlayerApplication implements CommandLineRunner {
@@ -19,8 +20,11 @@ public class TennisPlayerApplication implements CommandLineRunner {
 //	@Autowired
 //	PlayerDao dao;
 
+//	@Autowired
+//	PlayerRepository repo;
+
 	@Autowired
-	PlayerRepository repo;
+	PlayerSpringDataRepository repo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TennisPlayerApplication.class, args);
@@ -30,11 +34,27 @@ public class TennisPlayerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		//Inserting rows
+		logger.info("Inserting Player: {}", repo.save(new Player("Djokovic", "Serbia",
+				Date.valueOf("1987-05-22"), 81)));
+		logger.info("Inserting Player: {}", repo.save(new Player("Monfils", "France",
+				Date.valueOf("1986-09-01"), 10)));
+		logger.info("Inserting Player: {}", repo.save(new Player("Thiem", "Austria",
+				new Date(System.currentTimeMillis()), 17)));
 
-		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Djokovic", "Serbia", Date.valueOf("1987-05-22"), 81)));
-		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Monfils", "France", Date.valueOf("1986-09-01"), 10)));
-		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Thiem", "Austria", Date.valueOf("1993-09-03"), 17)));
-		logger.info("All Players Data: {}", repo.getAllPlayers());
+		logger.info("Updating Player with Id 3: {}", repo.save(new Player(3, "Thiem", "Austria",
+				Date.valueOf("1993-09-03"), 17)));
+
+		logger.info("Player with Id 2: {}", repo.findById(2));
+
+		logger.info("All Players Data: {}", repo.findAll());
+
+		repo.deleteById(2);
+
+//		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Djokovic", "Serbia", Date.valueOf("1987-05-22"), 81)));
+//		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Monfils", "France", Date.valueOf("1986-09-01"), 10)));
+//		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Thiem", "Austria", Date.valueOf("1993-09-03"), 17)));
+//		logger.info("All Players Data: {}", repo.getAllPlayers());
 
 
 //		//insert players
