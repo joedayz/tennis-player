@@ -41,20 +41,25 @@ public class TennisPlayerApplication implements CommandLineRunner {
 				Date.valueOf("1986-09-01"), 10)));
 		logger.info("Inserting Player: {}", repo.save(new Player("Thiem", "Austria",
 				new Date(System.currentTimeMillis()), 17)));
-
+//
 		logger.info("Updating Player with Id 3: {}", repo.save(new Player(3, "Thiem", "Austria",
 				Date.valueOf("1993-09-03"), 17)));
-
+//
 		logger.info("Player with Id 2: {}", repo.findById(2));
 
 		logger.info("All Players Data: {}", repo.findAll());
+//
+		//repo.deleteById(2);
 
-		repo.deleteById(2);
+		logger.info("Players from France: {}", repo.findByNationality("France"));
+
+
 
 //		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Djokovic", "Serbia", Date.valueOf("1987-05-22"), 81)));
 //		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Monfils", "France", Date.valueOf("1986-09-01"), 10)));
 //		logger.info("Inserting Player: {}", repo.insertPlayer(new Player("Thiem", "Austria", Date.valueOf("1993-09-03"), 17)));
-//		logger.info("All Players Data: {}", repo.getAllPlayers());
+//		logger.info("All Players Data: {}", repo.getPlayerById(3));
+//		logger.info("All Players: {}", repo.getAllPlayers());
 
 
 //		//insert players
@@ -78,16 +83,16 @@ public class TennisPlayerApplication implements CommandLineRunner {
 //		logger.info("Inserting Player 4 -> {}", dao.insertPlayer(new Player(4, "Roger Federer",
 //				"Switzerland", new Date(System.currentTimeMillis()), 20)));
 //
-//
+////
 //		logger.info("Updating Player 4 -> {}", dao.updatePlayer(new Player(4, "Roger Federer",
-//				"Switzerland", Date.valueOf("1993-09-03"), 20)));
-//
-//
+//				"Switzerland", Date.valueOf("1993-09-03"), 41)));
+////
+////
 //		logger.info("All Players Data -> {}", dao.getAllPlayers());
-//
-//		logger.info("Player with Id 3 -> {}", dao.getPlayerById(3));
-//
-//		logger.info("Deleting Player with Id 3 -> {}", dao.deletePlayer(3));
+////
+//		logger.info("Player with Id 4 -> {}", dao.getPlayerById(4));
+////
+//		logger.info("Deleting Player with Id 4 -> {}", dao.deletePlayer(4));
 //
 //		logger.info("French Players -> {}", dao.getPlayerByNationality("France"));
 
